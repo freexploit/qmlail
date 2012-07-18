@@ -1,0 +1,3 @@
+[submodule "cutelogger"]
+	path = cutelogger
+	url = git://gitorious.org/cutelogger/cutelogger.git
