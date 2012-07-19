@@ -1,0 +1,173 @@
+
+find_package(GnuTLS REQUIRED)
+find_package(GSasl REQUIRED)
+
+include_directories(vmime)
+include_directories(.)
+
+include_directories(${GNUTLS_INCLUDE_DIR})
+
+set(sources
+    vmime/src/message.cpp
+    vmime/src/headerFieldFactory.cpp
+    vmime/src/streamContentHandler.cpp
+    vmime/src/plainTextPart.cpp
+    vmime/src/address.cpp
+    vmime/src/base.cpp
+    vmime/src/contentHandler.cpp
+    vmime/src/parameter.cpp
+    vmime/src/mailboxField.cpp
+    vmime/src/headerField.cpp
+    vmime/src/constants.cpp
+    vmime/src/mailbox.cpp
+    vmime/src/emptyContentHandler.cpp
+    vmime/src/generatedMessageAttachment.cpp
+    vmime/src/attachmentHelper.cpp
+    vmime/src/mailboxGroup.cpp
+    vmime/src/contentTypeField.cpp
+    vmime/src/messageId.cpp
+    vmime/src/parsedMessageAttachment.cpp
+    vmime/src/parameterizedHeaderField.cpp
+    vmime/src/body.cpp
+    vmime/src/platform.cpp
+    vmime/src/text.cpp
+    vmime/src/contentDisposition.cpp
+    vmime/src/bodyPartAttachment.cpp
+    vmime/src/charsetConverter.cpp
+    vmime/src/word.cpp
+    vmime/src/textPartFactory.cpp
+    vmime/src/exception.cpp
+    vmime/src/fileAttachment.cpp
+    vmime/src/messageBuilder.cpp
+    vmime/src/component.cpp
+    vmime/src/addressList.cpp
+    vmime/src/encoding.cpp
+    vmime/src/mediaType.cpp
+    vmime/src/messageIdSequence.cpp
+    vmime/src/object.cpp
+    vmime/src/charset.cpp
+    vmime/src/contentDispositionField.cpp
+    vmime/src/mailboxList.cpp
+    vmime/src/header.cpp
+    vmime/src/stringContentHandler.cpp
+    vmime/src/path.cpp
+    vmime/src/defaultAttachment.cpp
+    vmime/src/relay.cpp
+    vmime/src/bodyPart.cpp
+    vmime/src/propertySet.cpp
+    vmime/src/htmlTextPart.cpp
+    vmime/src/dateTime.cpp
+    vmime/src/disposition.cpp
+    vmime/src/wordEncoder.cpp
+    vmime/src/options.cpp
+    vmime/src/messageParser.cpp
+
+    vmime/src/utility/stringProxy.cpp
+    vmime/src/utility/inputStreamAdapter.cpp
+    vmime/src/utility/smartPtrInt.cpp
+    vmime/src/utility/progressListener.cpp
+    vmime/src/utility/stringUtils.cpp
+    vmime/src/utility/filteredStream.cpp
+    vmime/src/utility/seekableInputStreamRegionAdapter.cpp
+    vmime/src/utility/random.cpp
+    vmime/src/utility/stream.cpp
+    vmime/src/utility/parserInputStreamAdapter.cpp
+    vmime/src/utility/outputStream.cpp
+    vmime/src/utility/outputStreamByteArrayAdapter.cpp
+    vmime/src/utility/inputStreamPointerAdapter.cpp
+    vmime/src/utility/smartPtr.cpp
+    vmime/src/utility/url.cpp
+    vmime/src/utility/datetimeUtils.cpp
+    vmime/src/utility/inputStreamStringProxyAdapter.cpp
+    vmime/src/utility/inputStreamByteBufferAdapter.cpp
+    vmime/src/utility/streamUtils.cpp
+    vmime/src/utility/inputStream.cpp
+    vmime/src/utility/path.cpp
+    vmime/src/utility/outputStreamStringAdapter.cpp
+    vmime/src/utility/outputStreamSocketAdapter.cpp
+    vmime/src/utility/outputStreamAdapter.cpp
+    vmime/src/utility/inputStreamStringAdapter.cpp
+    vmime/src/utility/urlUtils.cpp
+    vmime/src/utility/inputStreamSocketAdapter.cpp
+    vmime/src/utility/encoder/defaultEncoder.cpp
+    vmime/src/utility/encoder/uuEncoder.cpp
+    vmime/src/utility/encoder/b64Encoder.cpp
+    vmime/src/utility/encoder/eightBitEncoder.cpp
+    vmime/src/utility/encoder/encoder.cpp
+    vmime/src/utility/encoder/sevenBitEncoder.cpp
+    vmime/src/utility/encoder/qpEncoder.cpp
+    vmime/src/utility/encoder/encoderFactory.cpp
+    vmime/src/utility/encoder/binaryEncoder.cpp
+
+    vmime/src/net/message.cpp
+    vmime/src/net/transport.cpp
+    vmime/src/net/serviceFactory.cpp
+    vmime/src/net/defaultConnectionInfos.cpp
+    vmime/src/net/serviceInfos.cpp
+    vmime/src/net/events.cpp
+    vmime/src/net/service.cpp
+    vmime/src/net/folder.cpp
+    vmime/src/net/session.cpp
+    vmime/src/net/imap/IMAPSStore.cpp
+    vmime/src/net/imap/IMAPConnection.cpp
+    vmime/src/net/imap/IMAPStore.cpp
+    vmime/src/net/imap/IMAPPart.cpp
+    vmime/src/net/imap/IMAPServiceInfos.cpp
+    vmime/src/net/imap/IMAPMessage.cpp
+    vmime/src/net/imap/IMAPTag.cpp
+    vmime/src/net/imap/IMAPFolder.cpp
+    vmime/src/net/imap/IMAPMessagePartContentHandler.cpp
+    vmime/src/net/imap/IMAPUtils.cpp
+    vmime/src/net/imap/IMAPStructure.cpp
+    vmime/src/net/maildir/maildirFormat.cpp
+    vmime/src/net/maildir/maildirUtils.cpp
+    vmime/src/net/maildir/maildirFolder.cpp
+    vmime/src/net/maildir/maildirMessage.cpp
+    vmime/src/net/maildir/maildirStore.cpp
+    vmime/src/net/maildir/maildirServiceInfos.cpp
+    vmime/src/net/maildir/format/courierMaildirFormat.cpp
+    vmime/src/net/maildir/format/kmailMaildirFormat.cpp
+    vmime/src/net/pop3/POP3ServiceInfos.cpp
+    vmime/src/net/pop3/POP3Message.cpp
+    vmime/src/net/pop3/POP3Folder.cpp
+    vmime/src/net/pop3/POP3SStore.cpp
+    vmime/src/net/pop3/POP3Utils.cpp
+    vmime/src/net/pop3/POP3Store.cpp
+    vmime/src/net/sendmail/sendmailTransport.cpp
+    vmime/src/net/sendmail/sendmailServiceInfos.cpp
+    vmime/src/net/smtp/SMTPServiceInfos.cpp
+    vmime/src/net/smtp/SMTPResponse.cpp
+    vmime/src/net/smtp/SMTPTransport.cpp
+    vmime/src/net/smtp/SMTPSTransport.cpp
+    vmime/src/net/tls/TLSSecuredConnectionInfos.cpp
+    vmime/src/net/tls/TLSSocket.cpp
+    vmime/src/net/tls/TLSSession.cpp
+
+    vmime/src/security/defaultAuthenticator.cpp
+    vmime/src/security/cert/certificateChain.cpp
+    vmime/src/security/cert/X509Certificate.cpp
+    vmime/src/security/cert/defaultCertificateVerifier.cpp
+    vmime/src/security/digest/messageDigest.cpp
+    vmime/src/security/digest/messageDigestFactory.cpp
+    vmime/src/security/digest/md5/md5MessageDigest.cpp
+    vmime/src/security/digest/sha1/sha1MessageDigest.cpp
+    vmime/src/security/sasl/builtinSASLMechanism.cpp
+    vmime/src/security/sasl/defaultSASLAuthenticator.cpp
+    vmime/src/security/sasl/SASLMechanismFactory.cpp
+    vmime/src/security/sasl/SASLContext.cpp
+    vmime/src/security/sasl/SASLSession.cpp
+    vmime/src/security/sasl/SASLSocket.cpp
+
+    vmime/src/platforms/posix/posixFile.cpp
+    vmime/src/platforms/posix/posixChildProcess.cpp
+    vmime/src/platforms/posix/posixSocket.cpp
+    vmime/src/platforms/posix/posixHandler.cpp
+
+)
+
+set(headers
+)
+
+add_library(vmime SHARED ${sources} ${headers})
+target_link_libraries(vmime ${GNUTLS_LIBRARIES} ${GSASL_LIBRARIES})
+

@@ -5,6 +5,7 @@ include(${QT_USE_FILE})
 include_directories(.)
 
 add_subdirectory(dummyFetcher)
+add_subdirectory(vmime/vmime_cmake)
 
 set( sources
     qmlailib.cpp
