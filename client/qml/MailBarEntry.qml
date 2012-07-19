@@ -79,7 +79,7 @@ Item {
                     height: 0.3* parent.height
                 }
 
-                Text {
+                WrappedText {
                     id: subjectText
                     text: entrySubject
                     wrapMode: Text.NoWrap
@@ -89,7 +89,7 @@ Item {
                     height: 0.3* parent.height
                 }
 
-                WrappedText{
+                WrappedText {
                     id: contentText
                     text: entryContent
                     font.pointSize: 8
@@ -97,6 +97,7 @@ Item {
                     height: 0.4* parent.height
                     color: "gray"
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    maximumLineCount: 3
                 }
             }
         }

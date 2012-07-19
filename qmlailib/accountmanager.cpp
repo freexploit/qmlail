@@ -19,6 +19,11 @@ struct AccountManagerPrivate
 
         }
     }
+
+    void loadSettings()
+    {
+        // if setting file does not exists create it
+    }
 };
 
 AccountManager::AccountManager():
