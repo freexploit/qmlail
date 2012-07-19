@@ -69,7 +69,7 @@ Item {
                 width: parent.width - buttons.width
                 anchors.leftMargin: 5
 
-                Text {
+                WrappedText {
                     id: fromText
                     text: entryFrom
                     verticalAlignment: Text.AlignVCenter
@@ -96,6 +96,7 @@ Item {
                     width: parent.width
                     height: 0.4* parent.height
                     color: "gray"
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 }
             }
         }
