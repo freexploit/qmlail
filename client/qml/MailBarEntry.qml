@@ -17,7 +17,7 @@ Item {
 
     MouseArea {
         anchors.fill: parent
-//        hoverEnabled: true
+        hoverEnabled: true
         onEntered: {
             if ( mainItem.state==="Expanded") {
                 mainItem.state="Normal"
@@ -26,9 +26,9 @@ Item {
                 mainItem.state="Expanded"
         }
 
-//        onExited: {
-//            mainItem.state="Normal"
-//        }
+        onExited: {
+            mainItem.state="Normal"
+        }
 
         Item {
             anchors.fill: parent
@@ -36,7 +36,6 @@ Item {
             Row {
                 id: row1
                 anchors.fill: parent
-                spacing: 5
 
                 Column {
                     id: buttons
@@ -64,7 +63,7 @@ Item {
                             Text {
                                 id: textBox
                                 anchors.fill: parent
-                                font.pointSize: 15
+                                font.pointSize: 24
                                 text: "+"
                                 opacity: 0
                                 color: "white"
@@ -95,7 +94,7 @@ Item {
                             Text {
                                 id: textBox2
                                 anchors.fill: parent
-                                font.pointSize: 15
+                                font.pointSize: 24
                                 text: "+"
                                 opacity: 0
                                 color: "white"
@@ -126,7 +125,7 @@ Item {
                             Text {
                                 id: textBox3
                                 anchors.fill: parent
-                                font.pointSize: 15
+                                font.pointSize: 24
                                 text: "+"
                                 opacity: 0
                                 color: "white"
@@ -142,7 +141,6 @@ Item {
 
                 Column {
                     id: texts
-                    spacing: 0
                     height: parent.height
                     width: parent.width - buttons.width -textMargin
 
@@ -154,7 +152,7 @@ Item {
                         verticalAlignment: Text.AlignVCenter
                         horizontalAlignment: Text.AlignLeft
                         font.pointSize: 14
-                        width: parent.width
+                        width: parent.width - textMargin
                         height: 0.3* parent.height
                         elide: Text.ElideRight
                     }
@@ -167,7 +165,7 @@ Item {
                         anchors.leftMargin: textMargin
                         verticalAlignment: Text.AlignVCenter
                         font.pointSize: 11
-                        width: parent.width
+                        width: parent.width - textMargin
                         height: 0.3* parent.height
                         elide: Text.ElideRight
                     }
@@ -176,7 +174,7 @@ Item {
                         id: contentText
                         text: entryContent
                         font.pointSize: 8
-                        width: parent.width
+                        width: parent.width - textMargin
                         height: 0.4* parent.height
                         color: "gray"
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
