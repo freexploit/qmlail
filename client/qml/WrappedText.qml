@@ -11,6 +11,8 @@ Item {
     property alias color: textField.color
     property alias maximumLineCount: textField.maximumLineCount
 
+    property bool wrap
+
 
 
     width: 100
@@ -19,6 +21,10 @@ Item {
     Text {
         id:textField
         anchors.fill: parent
-        elide: Text.ElideRight
+        elide: {
+            if ( wrap )
+                return Text.ElideRight
+            return false
+        }
     }
 }

@@ -39,7 +39,7 @@ Item {
 
             Rectangle {
                 id: mailFooter
-                color: "blue"
+                color: "#333438"
                 width: parent.width
                 height: 0.1 * parent.height
 
@@ -48,6 +48,7 @@ Item {
                     text: "w0lanto@gmail.com"
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
+                    color: "#63686E"
                 }
             }
         }

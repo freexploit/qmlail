@@ -10,7 +10,7 @@ Rectangle {
             id: leftBar
             width: 0.2 * parent.width
             height: parent.height
-            color: "black"
+            color: "#25282D"
         }
 
         Rectangle{
@@ -32,7 +32,7 @@ Rectangle {
         }
 
         DetailBar {
-            width: 0.6 * parent.width
+            width: 0.5 * parent.width - 5
             height: parent.height
         }
     }

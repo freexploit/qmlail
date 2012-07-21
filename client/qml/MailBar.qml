@@ -6,25 +6,22 @@ Item {
 
     ListView {
         id: listView
-        spacing: 30
         anchors.fill: parent
-        anchors.topMargin: 10
         model: mailBarEntryModel
         delegate: Item {
             width: listView.width
             height: 120
             Column {
                 anchors.fill: parent
-                spacing: 15
                 MailBarEntry {
                     width: listView.width
-                    height: 120
+                    height: parent.height -1
                     entrySubject:subject
                     entryFrom: from
                 }
                 Rectangle {
                     width: listView.width
-                    height: 2
+                    height: 1
                     color: "grey"
                 }
             }

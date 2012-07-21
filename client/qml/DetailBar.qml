@@ -7,14 +7,18 @@ Item {
 
     ListView {
         id: listView
+        anchors.topMargin: 10
         anchors.fill: parent
         model: mailConversationModel
 
+        spacing: 5
+
         delegate: DetailBarEntry {
-            width: parent.width
-            height: 100
-            from:fromValue
-            to:toValue
+            width: listView.width
+            fromEmail:fromEmailValue
+            fromName:fromNameValue
+            toName:toNameValue
+            toEmail: toEmailValue
             subject: subjectValue
             content: contentValue
         }

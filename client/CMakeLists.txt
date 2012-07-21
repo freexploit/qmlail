@@ -19,6 +19,7 @@ set(qml_files
     qml/DetailBar.qml
     qml/MailBarEntry.qml
     qml/DetailBarEntry.qml
+    qml/DetailBarEntryExpanded.qml
     qml/dummydata/mailBarEntryModel.qml
     qml/dummydata/mailConversationModel.qml
 )
